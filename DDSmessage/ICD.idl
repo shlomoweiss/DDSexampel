@@ -1,0 +1,8 @@
+module ICD_pkg
+{
+    struct HelloWorld
+    {
+        unsigned long index;
+        string message;
+    };
+};

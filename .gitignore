@@ -1,0 +1,9 @@
+DDSmessage/build/*
+swig/ICDWrapperCpp/build/*
+
+swig/ICDWrapperCsharp/obj/*
+swig/ICDWrapperCsharp/bin/*
+Csharp/PublisherApp/bin/*
+Csharp/SubscriberApp/bin/*
+Csharp/PublisherApp/obj/*
+Csharp/SubscriberApp/obj/*
