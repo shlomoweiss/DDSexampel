@@ -122,4 +122,22 @@ const char* dds_take_message(uint32_t* index_out) {
     return nullptr;
 }
 
+// NEW: Write a complete HelloWorld struct
+int dds_write_struct(const ICD_pkg::HelloWorld* hello_world) {
+    std::lock_guard<std::mutex> lock(g_mutex);
+    if (!g_writer || !hello_world) return 0;
+    return g_writer->write(hello_world) == eprosima::fastdds::dds::RETCODE_OK ? 1 : 0;
+}
+
+// NEW: Take a complete HelloWorld struct
+int dds_take_struct(ICD_pkg::HelloWorld* hello_world_out) {
+    std::lock_guard<std::mutex> lock(g_mutex);
+    if (!g_reader || !hello_world_out) return 0;
+    SampleInfo info;
+    if (g_reader->take_next_sample(hello_world_out, &info) == eprosima::fastdds::dds::RETCODE_OK) {
+        return info.instance_state == ALIVE_INSTANCE_STATE ? 1 : 0;
+    }
+    return 0;
+}
+
 } // extern C

@@ -7,3 +7,10 @@ Csharp/PublisherApp/bin/*
 Csharp/SubscriberApp/bin/*
 Csharp/PublisherApp/obj/*
 Csharp/SubscriberApp/obj/*
+Csharp/HelloWorldDemo/bin/*
+Csharp/HelloWorldDemo/obj/*
+Csharp/StructPublisher/bin/*
+
+Csharp/StructPublisher/obj/*
+Csharp/StructSubscriber/bin/*
+Csharp/StructSubscriber/obj/*

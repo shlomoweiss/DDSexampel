@@ -45,8 +45,18 @@ public class ICDWrapper {
     return ret;
   }
 
+  public static int dds_write_struct(HelloWorld hello_world) {
+    int ret = ICDWrapperPINVOKE.dds_write_struct(HelloWorld.getCPtr(hello_world));
+    return ret;
+  }
+
   public static int dds_take(SWIGTYPE_p_unsigned_int index_out, string message_buffer, int buffer_len) {
     int ret = ICDWrapperPINVOKE.dds_take(SWIGTYPE_p_unsigned_int.getCPtr(index_out), message_buffer, buffer_len);
+    return ret;
+  }
+
+  public static int dds_take_struct(HelloWorld hello_world_out) {
+    int ret = ICDWrapperPINVOKE.dds_take_struct(HelloWorld.getCPtr(hello_world_out));
     return ret;
   }
 

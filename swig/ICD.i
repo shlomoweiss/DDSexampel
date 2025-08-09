@@ -19,7 +19,7 @@
 %include "ICDTypeObjectSupport.hpp"
 %include "ICDCdrAux.hpp"
 
-// Simple C facade functions
+// Simple C facade functions - includes both legacy and new struct-based functions
 %include "dds_facade.hpp"
 
 // Inline helper to expose take with returned string (simplifies C# usage)

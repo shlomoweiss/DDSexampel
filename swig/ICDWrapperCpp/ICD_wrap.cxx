@@ -778,6 +778,18 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ICDWrapper_dds_write(unsigned int jarg1, char 
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_ICDWrapper_dds_write_struct(void * jarg1) {
+  int jresult ;
+  ICD_pkg::HelloWorld *arg1 = (ICD_pkg::HelloWorld *) 0 ;
+  int result;
+  
+  arg1 = (ICD_pkg::HelloWorld *)jarg1; 
+  result = (int)dds_write_struct((ICD_pkg::HelloWorld const *)arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT int SWIGSTDCALL CSharp_ICDWrapper_dds_take(void * jarg1, char * jarg2, int jarg3) {
   int jresult ;
   uint32_t *arg1 = (uint32_t *) 0 ;
@@ -789,6 +801,18 @@ SWIGEXPORT int SWIGSTDCALL CSharp_ICDWrapper_dds_take(void * jarg1, char * jarg2
   arg2 = (char *)jarg2; 
   arg3 = (int)jarg3; 
   result = (int)dds_take(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_ICDWrapper_dds_take_struct(void * jarg1) {
+  int jresult ;
+  ICD_pkg::HelloWorld *arg1 = (ICD_pkg::HelloWorld *) 0 ;
+  int result;
+  
+  arg1 = (ICD_pkg::HelloWorld *)jarg1; 
+  result = (int)dds_take_struct(arg1);
   jresult = result; 
   return jresult;
 }

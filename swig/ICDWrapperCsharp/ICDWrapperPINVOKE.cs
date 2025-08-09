@@ -303,8 +303,14 @@ class ICDWrapperPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("ICDWrapper", EntryPoint="CSharp_ICDWrapper_dds_write")]
   public static extern int dds_write(uint jarg1, string jarg2);
 
+  [global::System.Runtime.InteropServices.DllImport("ICDWrapper", EntryPoint="CSharp_ICDWrapper_dds_write_struct")]
+  public static extern int dds_write_struct(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("ICDWrapper", EntryPoint="CSharp_ICDWrapper_dds_take")]
   public static extern int dds_take(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("ICDWrapper", EntryPoint="CSharp_ICDWrapper_dds_take_struct")]
+  public static extern int dds_take_struct(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("ICDWrapper", EntryPoint="CSharp_ICDWrapper_dds_take_message")]
   public static extern string dds_take_message(global::System.Runtime.InteropServices.HandleRef jarg1);
