@@ -6,17 +6,20 @@ cmake_minimum_required(VERSION 3.15)
 
 project("icd_library")
 
-# Ensure we're using MSVC
-if(NOT MSVC)
-    message(FATAL_ERROR "This project requires MSVC compiler")
-endif()
-
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Enable DLL creation
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-set(BUILD_SHARED_LIBS ON)
+# Platform-specific settings
+if(WIN32)
+    # Enable DLL creation on Windows
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    set(BUILD_SHARED_LIBS ON)
+elseif(UNIX)
+    # Linux/Unix settings
+    set(BUILD_SHARED_LIBS ON)
+    # Enable position independent code for shared libraries
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
 
 # Find requirements
 find_package(fastcdr REQUIRED)

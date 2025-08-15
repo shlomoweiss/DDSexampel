@@ -1,5 +1,5 @@
 #!/bin/bash
-# Setup environment and run subscriber on Linux
+# Setup environment and run publisher on Linux
 
 # Change to the nodejs directory
 cd "$(dirname "$0")"
@@ -12,6 +12,6 @@ if [ -n "$1" ]; then
     export DDS_DOMAIN_ID="$1"
 fi
 
-# Run subscriber with remaining arguments
+# Run publisher with remaining arguments
 shift
-node examples/subscriber.js "$@"
+node examples/publisher.js "$@"
