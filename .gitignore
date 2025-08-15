@@ -17,3 +17,6 @@ Csharp/StructSubscriber/obj/*
 nodejs/node_modules/*
 
 nodejs/build/*
+swig/ICDWrapperPython/__pycache__/*
+swig/ICDWrapperPython/build/*
+swig/ICDWrapperPython/_ICDWrapper.cp312-win_amd64.pyd

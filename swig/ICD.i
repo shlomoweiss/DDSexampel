@@ -18,6 +18,7 @@
 %include "ICDPubSubTypes.hpp"
 %include "ICDTypeObjectSupport.hpp"
 %include "ICDCdrAux.hpp"
+%include "dds_facade.hpp"
 
 // Simple C facade functions - includes both legacy and new struct-based functions
 %include "dds_facade.hpp"
