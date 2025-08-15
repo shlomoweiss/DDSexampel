@@ -14,6 +14,7 @@
 #include <fastdds/dds/topic/TypeSupport.hpp>
 #include <mutex>
 #include <string>
+#include <cstdlib>  // for getenv, atoi
 
 using namespace eprosima::fastdds::dds;
 
@@ -36,17 +37,15 @@ void cleanup_locked() {
     if (g_subscriber) { g_participant->delete_subscriber(g_subscriber); g_subscriber = nullptr; }
     if (g_participant) { DomainParticipantFactory::get_instance()->delete_participant(g_participant); g_participant = nullptr; }
 }
-}
 
-extern "C" {
-
-int dds_init(const char* topic_name) {
+// Internal initialization function with configurable domain ID
+int dds_init_internal(const char* topic_name, uint32_t domain_id) {
     std::lock_guard<std::mutex> lock(g_mutex);
     cleanup_locked();
 
     DomainParticipantQos pqos;
     pqos.name("ICDFacadeParticipant");
-    g_participant = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+    g_participant = DomainParticipantFactory::get_instance()->create_participant(domain_id, pqos);
     if (!g_participant) return 0;
 
     // Register type
@@ -73,6 +72,23 @@ int dds_init(const char* topic_name) {
     if (!g_reader) { cleanup_locked(); return 0; }
 
     return 1;
+}
+}
+
+extern "C" {
+
+int dds_init(const char* topic_name) {
+    // Use default domain ID 0, or check environment variable
+    uint32_t domain_id = 0;
+    const char* env_domain = std::getenv("DDS_DOMAIN_ID");
+    if (env_domain) {
+        domain_id = static_cast<uint32_t>(std::atoi(env_domain));
+    }
+    return dds_init_internal(topic_name, domain_id);
+}
+
+int dds_init_with_domain(const char* topic_name, uint32_t domain_id) {
+    return dds_init_internal(topic_name, domain_id);
 }
 
 int dds_write(uint32_t index, const char* message) {

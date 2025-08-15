@@ -1,0 +1,21 @@
+{
+  "name": "dds-addon",
+  "version": "1.0.0",
+  "description": "Node.js addon for DDS messaging using N-API",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "clean": "node-gyp clean",
+    "test": "node examples/publisher.js & node examples/subscriber.js"
+  },
+  "keywords": ["dds", "messaging", "fastdds", "napi"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "8.5.0"
+  },
+  "devDependencies": {
+    "node-gyp": "11.3.0"
+  },
+  "gypfile": true
+}

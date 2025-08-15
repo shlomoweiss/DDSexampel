@@ -23,6 +23,9 @@ extern "C" {
 // Initialize (or reinitialize) DDS entities. Returns 1 on success.
 ICD_API int dds_init(const char* topic_name);
 
+// Initialize (or reinitialize) DDS entities with domain ID. Returns 1 on success.
+ICD_API int dds_init_with_domain(const char* topic_name, uint32_t domain_id);
+
 // LEGACY: Write a HelloWorld sample with index + message. Returns 1 on success.
 ICD_API int dds_write(uint32_t index, const char* message);
 
