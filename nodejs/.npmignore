@@ -1,0 +1,34 @@
+# Build artifacts
+build/
+dds-src/build/
+*.node
+*.obj
+*.pdb
+*.exp
+*.lib
+*.dll
+*.exe
+
+# Development files
+.vscode/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node modules (should be obvious but just in case)
+node_modules/
+
+# Test and development
+test/
+tests/
+coverage/

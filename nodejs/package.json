@@ -1,21 +1,41 @@
 {
   "name": "dds-addon",
   "version": "1.0.0",
-  "description": "Node.js addon for DDS messaging using N-API",
+  "description": "Cross-platform Node.js addon for DDS messaging using FastDDS",
   "main": "index.js",
   "scripts": {
+    "prebuild": "node scripts/build-dds.js",
     "build": "node-gyp rebuild",
     "clean": "node-gyp clean",
-    "test": "node examples/publisher.js & node examples/subscriber.js"
+    "install": "npm run prebuild && node-gyp rebuild",
+    "test": "node examples/test.js",
+    "preinstall": "node scripts/check-dependencies.js"
   },
-  "keywords": ["dds", "messaging", "fastdds", "napi"],
+  "keywords": ["dds", "messaging", "fastdds", "napi", "cross-platform"],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "node-addon-api": "8.5.0"
+    "node-addon-api": "^8.5.0"
   },
   "devDependencies": {
-    "node-gyp": "11.3.0"
+    "node-gyp": "^11.3.0"
   },
-  "gypfile": true
+  "gypfile": true,
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "os": ["win32", "linux"],
+  "files": [
+    "src/",
+    "dds-src/*.cpp",
+    "dds-src/*.cxx", 
+    "dds-src/*.hpp",
+    "dds-src/*.ipp",
+    "dds-src/CMakeLists.txt",
+    "examples/",
+    "scripts/",
+    "binding.gyp",
+    "index.js",
+    "README.md"
+  ]
 }

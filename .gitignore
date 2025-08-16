@@ -20,3 +20,16 @@ nodejs/build/*
 swig/ICDWrapperPython/__pycache__/*
 swig/ICDWrapperPython/build/*
 swig/ICDWrapperPython/_ICDWrapper.cp312-win_amd64.pyd
+nodejs/dds-addon-1.0.0.tgz
+# Generated/copied C++ source files (keep CMakeLists.txt committed)
+nodejs/dds-src/dds_facade.cpp
+nodejs/dds-src/dds_facade.hpp
+nodejs/dds-src/ICD.hpp
+nodejs/dds-src/ICDCdrAux.hpp
+nodejs/dds-src/ICDCdrAux.ipp
+nodejs/dds-src/ICDPubSubTypes.cxx
+nodejs/dds-src/ICDPubSubTypes.hpp
+nodejs/dds-src/ICDTypeObjectSupport.cxx
+nodejs/dds-src/ICDTypeObjectSupport.hpp
+nodejs/dds-src/build/
+

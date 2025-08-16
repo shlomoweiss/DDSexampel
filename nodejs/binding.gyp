@@ -5,20 +5,19 @@
       "sources": [ "src/addon.cpp" ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
-        "C:/cpp-prj/DDSexampel/DDSmessage"
+        "dds-src"
       ],
       "conditions": [
         ["OS=='win'", {
           "include_dirs": [
-            "C:/cpp-prj/DDSexampel/DDSmessage/build",
             "C:/fastdds 3.2.2/include",
             "C:/fastdds 3.2.2/include/fastcdr",
             "C:/fastdds 3.2.2/include/fastdds"
           ],
           "libraries": [
-            "C:/cpp-prj/DDSexampel/DDSmessage/build/Release/ICD.lib",
-            "C:/fastdds 3.2.2/lib/x64Win64VS2019/fastdds-3.2.lib",
-            "C:/fastdds 3.2.2/lib/x64Win64VS2019/fastcdr-2.3.lib",
+            "<(module_root_dir)/dds-src/build/Release/ICD.lib",
+            "C:/fastdds 3.2.2/lib/x64Win64VS2019/libfastdds-3.2.lib",
+            "C:/fastdds 3.2.2/lib/x64Win64VS2019/libfastcdr-2.3.lib",
             "C:/fastdds 3.2.2/lib/x64Win64VS2019/foonathan_memory-0.7.3.lib"
           ],
           "defines": [ 
@@ -35,14 +34,11 @@
         }],
         ["OS=='linux'", {
           "include_dirs": [
-            "../DDSmessage/build",
             "/usr/local/include",
             "/usr/local/include/fastdds",
             "/usr/local/include/fastcdr"
           ],
           "libraries": [
-            "-L../DDSmessage/build",
-            "-lICD",
             "-lfastdds",
             "-lfastcdr"
           ],
