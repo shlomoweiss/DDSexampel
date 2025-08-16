@@ -47,7 +47,9 @@ if (platform === 'win32') {
         // Check common installation paths
         const includePaths = [
             '/usr/local/include/fastdds',
-            '/usr/include/fastdds'
+            '/usr/include/fastdds',
+            '/usr/local/eprosima/fastdds/include',
+            '/usr/local/eprosima/fastcdr'
         ];
         
         let found = false;

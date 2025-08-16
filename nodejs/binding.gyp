@@ -36,12 +36,14 @@
           "include_dirs": [
             "/usr/local/include",
             "/usr/local/include/fastdds",
-            "/usr/local/include/fastcdr"
+            "/usr/local/include/fastcdr",
+            "/usr/local/eprosima/fastdds/include",
+            "/usr/local/eprosima/fastcdr/include"
           ],
           "libraries": [
             "<(module_root_dir)/dds-src/build/libICD.so",
-            "-lfastdds",
-            "-lfastcdr"
+            "/usr/local/eprosima/fastdds/lib/libfastdds.so",
+            "/usr/local/eprosima/fastcdr/lib/libfastcdr.so"
           ],
           "defines": [ 
             "NAPI_DISABLE_CPP_EXCEPTIONS",
