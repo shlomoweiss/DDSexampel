@@ -39,6 +39,7 @@
             "/usr/local/include/fastcdr"
           ],
           "libraries": [
+            "<(module_root_dir)/dds-src/build/libICD.so",
             "-lfastdds",
             "-lfastcdr"
           ],

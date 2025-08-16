@@ -5,7 +5,7 @@
 cd "$(dirname "$0")"
 
 # Add library directories to LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib:$(pwd)/../DDSmessage/build"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib:$(pwd)/../dds-src/build"
 
 # Set DDS domain ID if provided
 if [ -n "$1" ]; then
@@ -14,4 +14,4 @@ fi
 
 # Run publisher with remaining arguments
 shift
-node examples/publisher.js "$@"
+node ../examples/publisher.js "$@"
