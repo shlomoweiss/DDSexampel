@@ -1,24 +1,30 @@
 cmake_minimum_required(VERSION 3.15)
 project(icdwrapper)
 
-# Ensure we're using MSVC
-if(NOT MSVC)
-    message(FATAL_ERROR "This project requires MSVC compiler")
-endif()
-
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Enable DLL creation
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+# Configure for shared library building
 set(BUILD_SHARED_LIBS ON)
+if(WIN32)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
 
 # Find requirements
 find_package(fastcdr REQUIRED)
 find_package(fastdds 3 REQUIRED)
 
-# Find the pre-built hello_msg_lib
-find_library(ICD NAMES ICD PATHS "C:/cpp-prj/DDSexampel/DDSmessage/build/Release" REQUIRED)
+# Find the pre-built ICD library
+# Use different paths based on the platform
+if(WIN32)
+    find_library(ICD NAMES ICD PATHS "C:/cpp-prj/DDSexampel/DDSmessage/build/Release" REQUIRED)
+    set(INCLUDE_PATH "C:/cpp-prj/DDSexampel/DDSmessage")
+else()
+    # Linux paths - adjust relative to the swig/ICDWrapperCpp directory
+    find_library(ICD NAMES ICD PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../../DDSmessage/build" REQUIRED)
+    set(INCLUDE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../DDSmessage")
+endif()
 
 # Add your own target (example: an executable or another library)
 # add_executable(my_app main.cpp)
@@ -33,5 +39,5 @@ target_link_libraries(ICDWrapper ${ICD} fastdds fastcdr)
 target_include_directories(ICDWrapper 
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}
-        "C:/cpp-prj/DDSexampel/DDSmessage"
+        ${INCLUDE_PATH}
 )

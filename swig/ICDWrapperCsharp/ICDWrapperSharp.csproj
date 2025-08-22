@@ -1,9 +1,44 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    
+    <!-- NuGet Package Properties -->
+    <PackageId>ICDWrapperSharp</PackageId>
+    <PackageVersion>1.0.4</PackageVersion>
+    <Authors>Your Name</Authors>
+    <Company>Your Company</Company>
+    <Description>C# wrapper for ICD DDS messaging with native DLL dependencies (Windows and Linux)</Description>
+    <PackageTags>DDS;ICD;Messaging;Wrapper;CrossPlatform</PackageTags>
+    <PackageProjectUrl>https://github.com/shlomoweiss/DDSexampel</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/shlomoweiss/DDSexampel</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <!-- Import Conan-generated files -->
+  <Import Project="conandeps.props" Condition="Exists('conandeps.props')" />
+
+  <ItemGroup>
+    <!-- Include native libraries for different platforms in NuGet package -->
+    <Content Include="runtimes\**\*" PackagePath="runtimes\" Pack="true" />
+  </ItemGroup>
+
+  <Target Name="ConanInstall" BeforeTargets="Build">
+    <Message Text="Installing Conan dependencies for Windows..." Importance="high" />
+    <Exec Command="conan install . --build=missing --remote=local-conan --settings os=Windows" 
+          WorkingDirectory="$(MSBuildProjectDirectory)"
+          ContinueOnError="false" />
+    <Message Text="Installing Conan dependencies for Linux..." Importance="high" />
+    <Exec Command="conan install . --build=missing --remote=local-conan --settings os=Linux" 
+          WorkingDirectory="$(MSBuildProjectDirectory)"
+          ContinueOnError="true" />
+  </Target>
+
+  <!-- Import Conan-generated targets -->
+  <Import Project="conandeps.targets" Condition="Exists('conandeps.targets')" />
 
 </Project>
