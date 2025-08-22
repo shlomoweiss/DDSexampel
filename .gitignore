@@ -33,3 +33,5 @@ nodejs/dds-src/ICDTypeObjectSupport.cxx
 nodejs/dds-src/ICDTypeObjectSupport.hpp
 nodejs/dds-src/build/
 
+swig/ICDWrapperPython/_ICDWrapper.cp311-win_amd64.pyd
+DDSmessage/test_package/build/msvc-194-x86_64-14-release/CMakeFiles/TargetDirectories.txt
