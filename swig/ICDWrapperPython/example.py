@@ -5,8 +5,17 @@ Example Python script demonstrating DDS facade usage
 
 import sys
 import time
-import ICDWrapper
+import os
 
+
+# Set up DLL directories for Python 3.8+
+if sys.version_info >= (3, 8):
+    os.add_dll_directory(r'C:\fastdds 3.2.2\bin\x64Win64VS2019')
+    os.add_dll_directory(r'C:\cpp-prj\DDSexampel\DDSmessage\build\Release')
+
+os.environ['PATH'] = os.environ.get('PATH', '') + ';C:\\fastdds 3.2.2\\bin\\x64Win64VS2019;C:\\cpp-prj\\DDSexampel\\DDSmessage\\build\\Release'
+
+import ICDWrapper
 def publisher_example():
     """Example of publishing messages using DDS facade"""
     print("=== DDS Publisher Example ===")
