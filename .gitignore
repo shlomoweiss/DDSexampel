@@ -76,3 +76,5 @@ swig/ICDWrapperCsharp/ICDWrapperSharp.nuspec
 bin/Debug/net9.0/ICD.dll
 bin/Release/net9.0/ICD.dll
 runtimes/win-x64/native/ICD.dll
+nodejs/runtimes/*
+
