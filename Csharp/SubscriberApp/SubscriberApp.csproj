@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="ICDWrapperSharp" Version="1.0.4" />
+    <PackageReference Include="ICDWrapperSharp" Version="1.0.7" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -10,5 +10,25 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <!-- Copy native libraries from NuGet package runtimes folder based on platform -->
+  <PropertyGroup>
+    <NuGetPackageRoot Condition="'$(NuGetPackageRoot)' == ''">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageRoot Condition="$([MSBuild]::IsOSPlatform('Linux')) And '$(NuGetPackageRoot)' == ''">$(HOME)/.nuget/packages/</NuGetPackageRoot>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <None Include="$(NuGetPackageRoot)icdwrappersharp\1.0.7\runtimes\win-x64\*.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+    <None Include="$(NuGetPackageRoot)icdwrappersharp/1.0.7/runtimes/linux-x64/*.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>%(Filename)%(Extension)</Link>
+    </None>
+  </ItemGroup>
 
 </Project>
