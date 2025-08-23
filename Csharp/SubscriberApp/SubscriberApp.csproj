@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\swig\ICDWrapperCsharp\ICDWrapperSharp.csproj" />
+    <PackageReference Include="ICDWrapperSharp" Version="1.0.4" />
   </ItemGroup>
 
   <PropertyGroup>

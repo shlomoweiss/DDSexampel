@@ -7,7 +7,7 @@
     
     <!-- NuGet Package Properties -->
     <PackageId>ICDWrapperSharp</PackageId>
-    <PackageVersion>1.0.4</PackageVersion>
+    <PackageVersion>1.0.7</PackageVersion>
     <Authors>Your Name</Authors>
     <Company>Your Company</Company>
     <Description>C# wrapper for ICD DDS messaging with native DLL dependencies (Windows and Linux)</Description>
@@ -27,17 +27,7 @@
     <Content Include="runtimes\**\*" PackagePath="runtimes\" Pack="true" />
   </ItemGroup>
 
-  <Target Name="ConanInstall" BeforeTargets="Build">
-    <Message Text="Installing Conan dependencies for Windows..." Importance="high" />
-    <Exec Command="conan install . --build=missing --remote=local-conan --settings os=Windows" 
-          WorkingDirectory="$(MSBuildProjectDirectory)"
-          ContinueOnError="false" />
-    <Message Text="Installing Conan dependencies for Linux..." Importance="high" />
-    <Exec Command="conan install . --build=missing --remote=local-conan --settings os=Linux" 
-          WorkingDirectory="$(MSBuildProjectDirectory)"
-          ContinueOnError="true" />
-  </Target>
-
+  
   <!-- Import Conan-generated targets -->
   <Import Project="conandeps.targets" Condition="Exists('conandeps.targets')" />
 

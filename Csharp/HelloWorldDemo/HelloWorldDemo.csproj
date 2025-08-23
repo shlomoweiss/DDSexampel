@@ -8,19 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="ICDWrapperSharp">
-      <HintPath>..\..\swig\ICDWrapperCsharp\bin\Release\net9.0\ICDWrapperSharp.dll</HintPath>
-    </Reference>
+    <PackageReference Include="ICDWrapperSharp" Version="1.0.4" />
   </ItemGroup>
 
+  <!-- Copy native DLLs from build directories since NuGet package only has Linux binaries -->
   <ItemGroup>
     <None Include="..\..\DDSmessage\build\Release\*.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\..\swig\ICDWrapperCpp\build\Release\*.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\swig\ICDWrapperCsharp\bin\Release\net9.0\*.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
