@@ -15,7 +15,7 @@
             "C:/fastdds 3.2.2/include/fastdds"
           ],
           "libraries": [
-            "<(module_root_dir)/dds-src/build/Release/ICD.lib",
+            "<(module_root_dir)/runtimes/win-x64/ICD.lib",
             "C:/fastdds 3.2.2/lib/x64Win64VS2019/libfastdds-3.2.lib",
             "C:/fastdds 3.2.2/lib/x64Win64VS2019/libfastcdr-2.3.lib",
             "C:/fastdds 3.2.2/lib/x64Win64VS2019/foonathan_memory-0.7.3.lib"
@@ -41,7 +41,7 @@
             "/usr/local/eprosima/fastcdr/include"
           ],
           "libraries": [
-            "<(module_root_dir)/dds-src/build/libICD.so",
+            "<(module_root_dir)/runtimes/linux-x64/libICD.so",
             "/usr/local/eprosima/fastdds/lib/libfastdds.so",
             "/usr/local/eprosima/fastcdr/lib/libfastcdr.so"
           ],

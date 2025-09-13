@@ -4,7 +4,7 @@
   "description": "Cross-platform Node.js addon for DDS messaging using FastDDS",
   "main": "index.js",
   "scripts": {
-    "prebuild": "node scripts/build-dds.js",
+    "prebuild": "node scripts/extract-native.js",
     "build": "node-gyp rebuild",
     "clean": "node-gyp clean",
     "install": "npm run prebuild && node-gyp rebuild",

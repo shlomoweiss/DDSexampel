@@ -1,0 +1,14 @@
+[requires]
+ddsmessage/1.0.0#0a9c62b4443aeb14bd563f9729c63f5d
+
+
+[generators]
+
+
+[options]
+ddsmessage/*:shared=True
+icdwrappercpp/*:shared=True
+
+[imports]
+bin, *.dll -> runtimes/win-x64/native @ os=Windows
+lib, *.so* -> runtimes/linux-x64/native @ os=Linux
